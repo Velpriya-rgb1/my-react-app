@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'; // Ensure correct path to Navbar
+import TaskApp from './components/TaskApp'; // Import TaskApp component for the task section
+import CategoryPage from './components/CategoryPage'; // Ensure correct path to CategoryPage
+import './App.css'; // Import the CSS file
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <div className="App">
+        {/* Navbar component */}
+        <Navbar />
+        
+        <Routes>
+          {/* Home page route */}
+          <Route
+            path="/"
+            element={
+              <div>
+                {/* Flex container for General text and icons */}
+                <div className="content-container">
+                  <div className="text-icon-wrapper">
+                    {/* Display "General" heading */}
+                    
+                    
+                    
+                 
+                  </div>
+                </div>
 
+                {/* Task section */}
+                <div className="task-app-container">
+                  <TaskApp />
+                </div>
+              </div>
+            }
+          />
+          
+          {/* Route for CategoryPage */}
+          <Route path="/category" element={<CategoryPage />} />
+        
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 export default App;
